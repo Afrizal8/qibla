@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
 
@@ -14,13 +13,17 @@ Animation<double>? animation;
 AnimationController? _animationController;
 double begin = 0.0;
 
+// smoothing filter
+double filteredAngle = 0.0;
+const smoothing = 0.15; // Semakin kecil = semakin halus
+
 class _QiblahScreenState extends State<QiblahScreen>
     with SingleTickerProviderStateMixin {
   @override
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 300), // lebih cepat dan smooth
     );
     animation = Tween(begin: 0.0, end: 0.0).animate(_animationController!);
     super.initState();
@@ -30,23 +33,32 @@ class _QiblahScreenState extends State<QiblahScreen>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 48, 48, 48),
+        backgroundColor: const Color(0xFFD3EFFD),
         body: StreamBuilder(
           stream: FlutterQiblah.qiblahStream,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Container(
-                alignment: Alignment.center,
-                child: const CircularProgressIndicator(color: Colors.white),
+              return const Center(
+                child: CircularProgressIndicator(color: Colors.white),
               );
             }
 
             final qiblahDirection = snapshot.data;
+
+            // raw angle dari library
+            final rawAngle = (qiblahDirection!.qiblah * (pi / 180) * -1);
+
+            // smoothing filter
+            filteredAngle =
+                filteredAngle + (rawAngle - filteredAngle) * smoothing;
+
+            // apply to animation
             animation = Tween(
               begin: begin,
-              end: (qiblahDirection!.qiblah * (pi / 180) * -1),
+              end: filteredAngle,
             ).animate(_animationController!);
-            begin = (qiblahDirection.qiblah * (pi / 180) * -1);
+
+            begin = filteredAngle;
             _animationController!.forward(from: 0);
 
             return Center(
@@ -55,7 +67,10 @@ class _QiblahScreenState extends State<QiblahScreen>
                 children: [
                   Text(
                     "${qiblahDirection.direction.toInt()}°",
-                    style: const TextStyle(color: Colors.white, fontSize: 24),
+                    style: const TextStyle(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontSize: 24,
+                    ),
                   ),
                   const SizedBox(height: 10),
                   SizedBox(
