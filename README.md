@@ -1,16 +1,48 @@
-# qibla
+# 🕌 Qibla Mobile App (Flutter)
 
-A new Flutter project.
+Aplikasi mobile penunjuk **arah kiblat** yang dibangun menggunakan **Flutter**, dilengkapi fitur **jadwal salat**, autentikasi (Login & Register), dan kompas kiblat.
 
-## Getting Started
+## 📱 Fitur Utama
 
-This project is a starting point for a Flutter application.
+- 🧭 **Arah Kiblat**  
+  Menampilkan arah kiblat menggunakan sensor kompas.
 
-A few resources to get you started if this is your first Flutter project:
+- 🕒 **Jadwal Salat (Home)**  
+  Menampilkan jadwal salat harian berdasarkan lokasi pengguna.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🖼️ Screenshots
+
+Berikut tampilan utama aplikasi:
+
+| Login | Register |
+|-------|----------|
+| ![Login](assets/screenshots/Login.png) | ![Register](assets/screenshots/Register.png) |
+
+| Home (Jadwal Salat) | Qibla | About |
+|---------------------|-------|--------|
+| ![Home](assets/screenshots/Home.png) | ![Qibla](assets/screenshots/Qibla.png) | ![About](assets/screenshots/About.png) |
+
+---
+
+## 🚀 Teknologi yang Digunakan
+
+- **Flutter** (SDK ^3.10.0)
+- **Dart**
+- `permission_handler`
+- `flutter_qiblah`
+- `http`
+- `geolocator`
+- `geocoding`
+
+---
+
+## 📦 Instalasi & Menjalankan Aplikasi
+
+Clone repository:
+
+```bash
+
+git clone https://github.com/Afrizal8/qibla.git
+cd qibla
