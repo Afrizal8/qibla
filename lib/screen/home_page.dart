@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
       double lng = pos.longitude;
 
       // Request ke AlAdhan API
-      // method=99 = Kemenag Indonesia (jika tersedia), atau bisa pilih method lain
       final uri = Uri.parse(
         "https://api.aladhan.com/v1/timings?latitude=$lat&longitude=$lng&method=99",
       );

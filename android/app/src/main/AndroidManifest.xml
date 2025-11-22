@@ -7,7 +7,7 @@
     <uses-feature android:name="android.hardware.sensor.compass" android:required="false"/>
 
     <application
-        android:label="qibla"
+        android:label="Qibla"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
