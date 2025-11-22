@@ -18,11 +18,11 @@ Berikut tampilan utama aplikasi:
 
 | Login | Register |
 |-------|----------|
-| ![Login](assets/screenshots/Login.png) | ![Register](assets/screenshots/Register.png) |
+| ![Login](assets/screenshots/Login.jpg) | ![Register](assets/screenshots/Register.jpg) |
 
 | Home (Jadwal Salat) | Qibla | About |
 |---------------------|-------|--------|
-| ![Home](assets/screenshots/Home.png) | ![Qibla](assets/screenshots/Qibla.png) | ![About](assets/screenshots/About.png) |
+| ![Home](assets/screenshots/Home.jpg) | ![Qibla](assets/screenshots/Qibla.jpg) | ![About](assets/screenshots/About.jpg) |
 
 ---
 
