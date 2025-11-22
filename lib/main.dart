@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:qibla/screen/qiblah_screen.dart';
+import 'screen/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,20 +34,26 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Arah Kiblat',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
+
+      theme: ThemeData(
+        fontFamily: 'Coolvetica',
+        scaffoldBackgroundColor: const Color(0xFFD3EFFD),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          surface: const Color(0xFFD3EFFD),
+        ),
+      ),
+
       home: FutureBuilder(
-        builder: (context, snapshot) {
-          if (hasPermission) {
-            return const QiblahScreen();
-          } else {
-            return const Scaffold(
-              backgroundColor: Color.fromARGB(255, 48, 48, 48),
-            );
-          }
-        },
         future: getPermission(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return const LoginPage();
+          }
+          return const Scaffold(backgroundColor: Colors.black);
+        },
       ),
     );
   }

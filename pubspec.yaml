@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   permission_handler: ^12.0.1
   flutter_qiblah: ^3.1.0+1
+  http: ^1.6.0
+  geolocator: ^13.0.4
+  geocoding: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -73,10 +76,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Coolvetica
+      fonts:
+        - asset: assets/fonts/Coolvetica Rg.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
